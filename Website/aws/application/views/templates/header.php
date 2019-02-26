@@ -48,8 +48,8 @@
         }
     </script>
 
-    <!-- Automatically refresh page every 60 seconds -->
-    <meta http-equiv="refresh" content="60">
+    <!-- Automatically refresh page every 15 seconds -->
+    <meta http-equiv="refresh" content="15">
 
 </head>
 

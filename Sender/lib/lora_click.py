@@ -13,9 +13,14 @@ ser = UART(1, baudrate = 57600)
 
 # Reset LoRa click module
 def reset():
-    resetPin.value(0)
-    resetPin.value(1)
-    time.sleep(0.5) # radio module needs time after reset before it can be initialized
+    # Hardware reset
+    #resetPin.value(0)
+    #resetPin.value(1)
+    #time.sleep(0.5) # radio module needs time after reset before it can be initialized
+
+    # Software reset
+    write_line("sys reset")
+    print(read_line())
 
 # Initializing LoRa click module
 def setup():

@@ -1,7 +1,8 @@
 # Author: Florian Gabelle
 # IMPORTANT NOTE:
-# deepsleep() actually restarts device on exit, meaning that both boot.py and
-# main.py are being run everytime, and we never stay in while True: loop
+# if deepsleep() is in use, the device is actually restarted on exit,
+# meaning that both boot.py and main.py are being run everytime,
+# and while True: loop is only gone through once
 
 import pycom
 import bme_280
@@ -47,5 +48,6 @@ while True:
 	# Send data
 	lora_click.send_data(data_sent)
 
+	#time.sleep(54)
 	# Put device in deep sleep mode and make sending data happen about every 1 min
-	machine.deepsleep(54000)
+	machine.deepsleep(9000)
