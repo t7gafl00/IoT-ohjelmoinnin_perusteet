@@ -47,5 +47,5 @@ while True:
 	# Send data
 	lora_click.send_data(data_sent)
 
-	# put device in deep sleep mode and make sending data happen about every 1 min
+	# Put device in deep sleep mode and make sending data happen about every 1 min
 	machine.deepsleep(54000)

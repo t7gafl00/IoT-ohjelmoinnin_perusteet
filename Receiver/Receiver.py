@@ -1,7 +1,10 @@
+# Author: Florian Gabelle
+
 # -*-coding: utf-8 -*-
 
 import lora_click
 import aws
+#import mysli
 
 # Parse received data packet string and assign values to different variables
 def parse_data(data_packet):
@@ -19,6 +22,7 @@ def parse_data(data_packet):
     print("pressure: ", pressure)
     print("humidity: ", humidity)
     print("luminance: ", luminance)
+    print("")
 
 lora_click.setup()
 while 1:    
@@ -26,4 +30,4 @@ while 1:
     if data_packet != -1:
         parse_data(data_packet)
         aws.post_data(temperature, pressure, humidity, luminance)
- 
+        #mysli.to_db(temperature, pressure, humidity, luminance)

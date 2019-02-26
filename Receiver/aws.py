@@ -1,6 +1,10 @@
+# Author: Florian Gabelle
+# This code is based on an example found in Mikrobitti magazine from November 2017
+
 #-*-coding: utf-8-*-
 
 from datetime import datetime
+from time import strftime
 import requests
 import json
 
@@ -11,7 +15,9 @@ import json
 # tiedon lukemisella
 def post_data(temperature, pressure, humidity, luminance):
     measurements = {
-        "timestamp": str(datetime.now()),
+        #"timestamp": str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")),
+        "date": str(datetime.now().strftime("%Y-%m-%d")),
+        "time": str(datetime.now().strftime("%H:%M:%S")),
         "temperature": str(temperature),
         "pressure": str(pressure),
         "humidity": str(humidity),
