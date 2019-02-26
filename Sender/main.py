@@ -1,4 +1,7 @@
 # Author: Florian Gabelle
+# IMPORTANT NOTE:
+# deepsleep() actually restarts device on exit, meaning that both boot.py and
+# main.py are being run everytime, and we never stay in while True: loop
 
 import pycom
 import bme_280
@@ -7,15 +10,17 @@ import lora_click
 import time
 import ubinascii
 
-# Convert int to N = "width" characters long string with leading zeroes, based on code by pythoncoder at:
+# Convert int to N = "width" characters long string with leading zeroes,
+# based on code by pythoncoder at:
 # https://forum.micropython.org/viewtopic.php?t=3201
 def zfill(s, width):
-	return '{:0>{w}}'.format(str(s), w=width)
+	return '{:0>{w}}'.format(str(s), w = width)
 
 pycom.heartbeat(False) # turn off blinkind led
-lora_click.setup()
 
-time.sleep(1) # wait for sensors to initialize
+time.sleep(1) # wait for sensors and LoRa module to initialize after power-on
+
+lora_click.setup()
 
 while True:
 	pycom.rgbled(0x00FF00) # Green
@@ -42,8 +47,5 @@ while True:
 	# Send data
 	lora_click.send_data(data_sent)
 
-	pycom.rgbled(0xFF0000)  # Red
-	time.sleep(0.2)
-	pycom.rgbled(0x000000)  # Off
-
-	time.sleep(60)
+	# put device in deep sleep mode and make sending data happen about every 1 min
+	machine.deepsleep(54000)
