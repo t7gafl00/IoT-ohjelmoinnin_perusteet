@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 # Author: Florian Gabelle
 # This code is based on an example found in Mikrobitti magazine from November 2017
-
-#-*-coding: utf-8-*-
 
 from datetime import datetime
 from time import strftime

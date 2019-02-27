@@ -1,6 +1,5 @@
+# -*- coding: utf-8 -*-
 # Author: Florian Gabelle
-
-# -*-coding: utf-8 -*-
 
 import RPi.GPIO as GPIO
 import serial
